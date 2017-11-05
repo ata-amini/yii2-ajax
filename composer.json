@@ -1,0 +1,33 @@
+{
+    "name": "wyno/yii2-ajax",
+    "description": "Yii2 ajax action view",
+    "type": "library",
+    "keywords": [
+        "yii2",
+        "extension"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ata amini",
+            "email": "ata.aminie@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*",
+        "wyno/yii2-flash": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Wyno\\Ajax\\": "src/"
+        },
+        "files": [
+        ]
+    },
+    "extra": {
+        "bootstrap": "Wyno\\Flash\\Bootstrap",
+        "branch-alias": {
+            "dev-master": "0.1.x-dev"
+        }
+    }
+}
