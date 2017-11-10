@@ -1,7 +1,7 @@
 {
     "name": "wyno/yii2-ajax",
     "description": "Yii2 ajax action view",
-    "type": "library",
+    "type": "yii2-extension",
     "keywords": [
         "yii2",
         "extension"
