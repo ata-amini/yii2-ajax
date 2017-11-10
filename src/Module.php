@@ -10,7 +10,6 @@
 
     namespace Wyno\Ajax;
 
-
     class Module extends \yii\base\Module
     {
         public $controllerNamespace = "Wyno\\Ajax";
@@ -20,9 +19,9 @@
 
         private $items = [];
 
-        public function is($action, $type)
+        public function is($id, $type)
         {
-            return isset($this->items[$type][$action]);
+            return isset($this->items[$type][$id]);
         }
 
         protected function put($id, $type, $action)
@@ -31,12 +30,12 @@
             return $this;
         }
 
-        public function register($id, $file, $type = 'action')
+        public function register($id, $target, $type = 'action')
         {
             if ($this->is($id, $type))
                 return false;
 
-            $this->put($id, $type, $file);
+            $this->put($id, $type, $target);
             return true;
         }
 
@@ -49,7 +48,7 @@
             return true;
         }
 
-        protected function remove($action, $type)
+        protected function remove($id, $type)
         {
             unset($this->items[$type][$action]);
         }
@@ -59,10 +58,12 @@
             return isset($this->items[$type]) ? $this->items[$type] : [];
         }
 
-        private function notify($id)
+        public function find($id, $type)
         {
-            flash()->error(\Yii::t('app', 'Required action\view ":action" not registered.', [
-                ':action' => $id
-            ]));
+            $result = null;
+            if (!$this->is($id, $type))
+                return $result;
+
+            return $this->items[$type][$id];
         }
     }

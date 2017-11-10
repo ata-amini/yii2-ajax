@@ -20,16 +20,19 @@
          */
         public function bootstrap($app)
         {
-            exit('dd');
             // if already module registered
             if ($app->hasModule('wynoajax')) return;
 
             // set module
             $app->setModule('wynoajax', "Wyno\\Ajax\\Module");
 
+            // set as singleton
+            \Yii::$container->setSingleton("Wyno\\Ajax\\Module");
+
             // add rules
             $app->urlManager->addRules([
-                'ajax/action/<any:[\w\W]+>' => 'wynoajax/ajax/execute'
+                'ajax/action/<action:[\w\W]+>' => 'wynoajax/ajax/execute',
+                'ajax/view/<view:[\w\W]+>'     => 'wynoajax/ajax/render-view'
             ]);
         }
     }
