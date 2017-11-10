@@ -22,12 +22,10 @@
             "Wyno\\Ajax\\": "src/"
         },
         "files": [
+            "src/helper.php"
         ]
     },
     "extra": {
-        "bootstrap": "Wyno\\Flash\\Bootstrap",
-        "branch-alias": {
-            "dev-master": "0.1.x-dev"
-        }
+        "bootstrap": "Wyno\\Ajax\\Bootstrap"
     }
 }
